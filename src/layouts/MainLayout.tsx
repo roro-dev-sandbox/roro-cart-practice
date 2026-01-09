@@ -3,7 +3,7 @@ import { CartList, ProductsList } from "@/features";
 export function MainLayout() {
 
     return (
-        <div>
+        <div className="">
             <ProductsList />
             <CartList />
         </div>

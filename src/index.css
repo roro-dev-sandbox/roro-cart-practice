@@ -19,6 +19,9 @@
   /* Breakpoints */
   --breakpoint-mobile: 375px;
   --breakpoint-desktop: 1440px;
+
+  /* Grid Layouts */
+  --grid-cols-cards: repeat(auto-fit, minmax(280px, auto));
 }
 
 @font-face {
@@ -35,4 +38,9 @@
     format("truetype-variations");
   font-weight: 400 700;
   font-style: italic;
+}
+
+body {
+  font-family: var(--font-red-hat);
+  font-size: var(--text-base);
 }
