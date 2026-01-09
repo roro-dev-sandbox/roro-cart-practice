@@ -43,4 +43,5 @@
 body {
   font-family: var(--font-red-hat);
   font-size: var(--text-base);
+  background-color: var(--color-rose-100);
 }
