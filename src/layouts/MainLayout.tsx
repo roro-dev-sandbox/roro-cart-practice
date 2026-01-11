@@ -3,7 +3,7 @@ import { CartList, ProductsList } from "@/features";
 export function MainLayout() {
 
     return (
-        <div>
+        <div className="flex flex-wrap max-w-345 mx-auto gap-7 p-4 sm:p-6 md:p-8 lg:p-11 xl:p-17">
             <ProductsList />
             <CartList />
         </div>
