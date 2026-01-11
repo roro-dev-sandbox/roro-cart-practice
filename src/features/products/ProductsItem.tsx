@@ -2,9 +2,10 @@ import type { Product } from "@/interfaces/product";
 import iconAddToCart from "/assets/images/icon-add-to-cart.svg";
 import iconIncQuantity from "/assets/images/icon-increment-quantity.svg";
 import iconDecQuantity from "/assets/images/icon-decrement-quantity.svg";
-import { useState } from "react";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useTypedSelector } from "@/store/store";
 import { addItem } from "../cart/cartSlice";
+
+
 
 export interface ProductsItemProps {
     product: Product;
@@ -12,30 +13,37 @@ export interface ProductsItemProps {
 
 export function ProductsItem({ product }: ProductsItemProps) {
     const dispatch = useAppDispatch();
-    const [quantity, setQuantity] = useState(0);
+    const item = useTypedSelector((state) => state.cart.items.find((item) => item.id === product.id));
 
     const handleClickIncrease = () => {
-        setQuantity((prevQuantity) => prevQuantity + 1);
         dispatch(addItem({
-            id: product.id,
-            name: product.name,
-            price: product.price,
+            ...product,
             quantity: 1,
         }));
     };
 
     const handleClickDecrease = () => {
-        setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 0));
+        dispatch(addItem({
+            ...product,
+            quantity: -1,
+        }));
     };
 
     return (
         <article className="w-full md:flex-1/3 lg:flex-1/4 flex flex-col group">
-            <img
-                className="rounded-xl group-hover:border-2 group-hover:border-brand-red"
-                src={product.image.desktop}
-                alt={product.name}
-            />
-            {quantity === 0 ? (
+            <div
+                className={`w-full h-48 md:h-60 rounded-xl group-hover:border-2 group-hover:border-brand-red  bg-(image:--image-url-mobile) md:bg-(image:--image-url-tablet) lg:bg-(image:--image-url-desktop) ${item ? 'border-brand-red border-2' : ''}`}
+                style={{
+                    '--image-url-desktop': `url(${product.image.desktop})`,
+                    '--image-url-tablet': `url(${product.image.tablet})`,
+                    '--image-url-mobile': `url(${product.image.mobile})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                } as React.CSSProperties}
+
+            >
+            </div>
+            {!item ? (
                 <button
                     className="group/add bg-white flex items-center justify-center gap-2 m-auto px-3 py-1.5 rounded-2xl border border-brand-red font-medium -translate-y-6/12 cursor-pointer hover:bg-brand-red hover:text-white transition"
                     onClick={handleClickIncrease}
@@ -50,17 +58,17 @@ export function ProductsItem({ product }: ProductsItemProps) {
             ) : (
                 <div className="bg-brand-red flex items-center justify-center gap-10 m-auto px-3 py-1.5 rounded-2xl font-medium -translate-y-6/12 text-white">
                     <button
-                        className="rounded-full border border-white px-1 py-2 hover:bg-white cursor-pointer"
+                        className="group/decrement rounded-full border border-white px-1 py-2 hover:bg-white cursor-pointer"
                         onClick={handleClickDecrease}
                     >
-                        <img src={iconDecQuantity} alt="Decrease quantity" />
+                        <img src={iconDecQuantity} alt="Decrease quantity" className="group-hover/decrement:filter-[invert(26%)_sepia(89%)_saturate(5500%)_hue-rotate(355deg)_brightness(90%)_contrast(110%)]" />
                     </button>
-                    <span>{quantity}</span>
+                    <span>{item.quantity}</span>
                     <button
-                        className="rounded-full border border-white p-1 hover:bg-white cursor-pointer"
+                        className="group/increment rounded-full border border-white p-1 hover:bg-white cursor-pointer"
                         onClick={handleClickIncrease}
                     >
-                        <img src={iconIncQuantity} alt="Increase quantity" />
+                        <img src={iconIncQuantity} alt="Increase quantity" className="group-hover/increment:filter-[invert(26%)_sepia(89%)_saturate(5500%)_hue-rotate(355deg)_brightness(90%)_contrast(110%)]" />
                     </button>
                 </div>
             )}
