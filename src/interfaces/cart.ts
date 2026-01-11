@@ -1,7 +1,6 @@
-export interface CartItem {
-    id: number;
-    name: string;
-    price: number;
+import type { Product } from "./product";
+
+export interface CartItem extends Product {
     quantity: number;
 }
 
