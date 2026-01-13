@@ -7,7 +7,7 @@ interface CartItemConfirmedProps {
 export function CartItemConfirmed({ item }: CartItemConfirmedProps) {
 
     return (
-        <div className="flex justify-between gap-2 items-center border-b border-rose-100 pb-4">
+        <article className="flex justify-between gap-2 items-center border-b border-rose-100 pb-3">
             <div className="flex gap-2.5 items-center">
                 <img className="size-10 rounded-lg" src={item.image.desktop} alt={item.name} />
                 <div className="text-sm min-w-0">
@@ -23,6 +23,6 @@ export function CartItemConfirmed({ item }: CartItemConfirmedProps) {
             <p className="font-semibold text-md">
                 ${(item.price * item.quantity).toFixed(2)}
             </p>
-        </div>
+        </article>
     )
 }

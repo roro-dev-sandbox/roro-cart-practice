@@ -13,7 +13,7 @@ export function CartList() {
     return (
         <>
 
-            <section className="top-5 sticky min-w-44 w-full mobile:flex-1 md:min-w-72 bg-white p-5 rounded-lg h-fit">
+            <section className="top-5 sticky min-w-72 w-full flex-1 bg-white p-5 rounded-lg h-fit">
                 <h1 className="text-xl font-bold text-brand-red">
                     Your Cart({items.length})
                 </h1>

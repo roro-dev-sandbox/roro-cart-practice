@@ -46,9 +46,11 @@ export function CartModal({ onClose }: CartModalProps) {
                 <img className="size-10 " src={iconOrderConfirmed} alt="Order Confirmed" />
                 <h1 className="mb-1 text-rose-900 text-3xl font-bold">Order Confirmed</h1>
                 <p className="text-rose-400 text-sm" >We hope you enjoy your food!</p>
-                <div className="space-y-6 bg-rose-50 p-4 rounded-lg">
-                    {items.map((item, index) => (<CartItemConfirmed key={index} item={item} />))}
-                    <p className="flex justify-between items-center">
+                <div className=" bg-rose-50 rounded-lg">
+                    <div className="max-h-55 overflow-auto space-y-4 px-4 pt-4">
+                        {items.map((item, index) => (<CartItemConfirmed key={index} item={item} />))}
+                    </div>
+                    <p className="flex justify-between items-center p-4">
                         <span className="text-sm text-rose- font-semibold">Order Total:</span>
                         <span className="text-rose-900 font-bold text-2xl">
                             ${orderTotal.toFixed(2)}

@@ -30,9 +30,9 @@ export function ProductsItem({ product }: ProductsItemProps) {
     };
 
     return (
-        <article className="w-full md:flex-1/3 lg:flex-1/4 flex flex-col group">
+        <article className="group">
             <div
-                className={`w-full h-48 md:h-60 rounded-xl group-hover:border-2 group-hover:border-brand-red  bg-(image:--image-url-mobile) md:bg-(image:--image-url-tablet) lg:bg-(image:--image-url-desktop) ${item ? 'border-brand-red border-2' : ''}`}
+                className={`h-56 sm:h-64 rounded-lg group-hover:border-2 group-hover:border-brand-red  bg-(image:--image-url-mobile) md:bg-(image:--image-url-tablet) lg:bg-(image:--image-url-desktop) ${item ? 'border-brand-red border-2' : ''}`}
                 style={{
                     '--image-url-desktop': `url(${product.image.desktop})`,
                     '--image-url-tablet': `url(${product.image.tablet})`,
@@ -45,7 +45,7 @@ export function ProductsItem({ product }: ProductsItemProps) {
             </div>
             {!item ? (
                 <button
-                    className="group/add bg-white flex items-center justify-center gap-2 m-auto px-3 py-1.5 rounded-2xl border border-brand-red font-medium -translate-y-6/12 cursor-pointer hover:bg-brand-red hover:text-white transition"
+                    className="w-40 group/add bg-white flex items-center justify-center gap-2 mx-auto px-3 py-1.5 rounded-2xl border border-rose-400 font-medium -translate-y-6/12 cursor-pointer hover:bg-brand-red hover:border-brand-red hover:text-white transition"
                     onClick={handleClickIncrease}
                 >
                     <img
@@ -56,7 +56,7 @@ export function ProductsItem({ product }: ProductsItemProps) {
                     Add to Cart
                 </button>
             ) : (
-                <div className="bg-brand-red flex items-center justify-center gap-10 m-auto px-3 py-1.5 rounded-2xl font-medium -translate-y-6/12 text-white">
+                <div className="w-40 bg-brand-red flex items-center justify-between gap-10 mx-auto px-2.5 py-1.5 rounded-2xl font-medium -translate-y-6/12 text-white">
                     <button
                         className="group/decrement rounded-full border border-white px-1 py-2 hover:bg-white cursor-pointer"
                         onClick={handleClickDecrease}
