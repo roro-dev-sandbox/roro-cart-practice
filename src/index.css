@@ -21,7 +21,7 @@
   --breakpoint-desktop: 1440px;
 
   /* Grid Layouts */
-  --grid-cols-cards: repeat(auto-fit, minmax(280px, auto));
+  --grid-cols-cards: repeat(auto-fit, minmax(220px, auto));
 }
 
 @font-face {
