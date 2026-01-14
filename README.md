@@ -1,73 +1,132 @@
-# React + TypeScript + Vite
+# 🛒 Roro Cart Practice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Aplicación de carrito de compras moderno construida con React, TypeScript, Redux Toolkit y Tailwind CSS
 
-Currently, two official plugins are available:
+## 📋 Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Sistema de carrito de compras para una tienda de postres que permite agregar productos, gestionar cantidades, visualizar el total de la orden y confirmar pedidos. Desarrollado con arquitectura escalable y mejores prácticas de React.
 
-## React Compiler
+## ✨ Características
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ✅ Agregar y eliminar productos del carrito
+- ✅ Incrementar y decrementar cantidades
+- ✅ Cálculo automático de totales
+- ✅ Confirmación de orden con modal
+- ✅ Responsive design
+- ✅ Gestión de estado con Redux Toolkit
+- ✅ TypeScript para type-safety
+- ✅ Custom hooks reutilizables
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19.2** - Librería UI
+- **TypeScript 5.9** - Tipado estático
+- **Redux Toolkit 2.11** - Gestión de estado
+- **Tailwind CSS 4.1** - Estilos
+- **Vite 7.2** - Build tool y dev server
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Instalación
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+# Clonar el repositorio
+git clone <repository-url>
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+
+# Construir para producción
+npm run build
+
+# Preview build de producción
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Estructura del Proyecto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── features/              # Módulos por funcionalidad
+│   ├── cart/             # Carrito de compras
+│   │   ├── components/   # Componentes del carrito
+│   │   ├── hooks/        # Custom hooks
+│   │   ├── types/        # TypeScript types
+│   │   ├── cartSlice.ts  # Redux slice
+│   │   └── cartSelectors.ts
+│   ├── order/            # Confirmación de órdenes
+│   └── products/         # Catálogo de productos
+├── shared/               # Componentes compartidos
+│   ├── hooks/           # Hooks globales
+│   ├── layouts/         # Layouts
+│   └── utils/           # Utilidades
+├── store/               # Configuración Redux
+└── data/               # Datos estáticos
+```
+
+## 🏗️ Arquitectura
+
+### **Feature-based Structure**
+Cada feature es independiente con sus componentes, hooks, tipos y lógica de negocio.
+
+### **Redux Toolkit**
+- Slices modulares
+- Selectores memoizados
+- Acciones tipadas
+
+### **Custom Hooks**
+- `useCartItem` - Gestión de items individuales
+- `useKeyPress` - Manejo de eventos de teclado
+
+### **Componentes Atómicos**
+Componentes pequeños, reutilizables y testeables:
+- `ProductCard`
+- `CartItem`
+- `OrderTotal`
+- `EmptyCart`
+
+## 🎯 Mejores Prácticas Aplicadas
+
+- ✅ Separación de concerns (UI, lógica, estado)
+- ✅ Custom hooks para reutilización
+- ✅ Selectores Redux para performance
+- ✅ TypeScript estricto
+- ✅ Componentes puros y presentacionales
+- ✅ Keys únicas en listas (item.id)
+- ✅ useCallback para optimización
+- ✅ Co-localización de código relacionado
+
+## 📝 Scripts Disponibles
+
+```bash
+npm run dev      # Servidor de desarrollo
+npm run build    # Build de producción
+npm run preview  # Preview del build
+npm run lint     # Linter ESLint
+```
+
+## 🎨 Características de UI
+
+- Diseño responsive (mobile-first)
+- Animaciones y transiciones suaves
+- Modal de confirmación con overlay
+- Estados vacíos informativos
+- Controles de cantidad intuitivos
+- Indicador visual de items seleccionados
+
+## 🔜 Posibles Mejoras Futuras
+
+- [ ] Persistencia en localStorage
+- [ ] Tests unitarios (Vitest)
+- [ ] Tests E2E (Playwright)
+- [ ] Animaciones con Framer Motion
+- [ ] Modo oscuro
+- [ ] Internacionalización (i18n)
+- [ ] Storybook para componentes
+
+## 📄 Licencia
+
+Este proyecto es de práctica educativa.
+
+---
